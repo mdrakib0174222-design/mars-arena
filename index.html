@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARS ARENA | eFootball 2026</title>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript"> (function(){ emailjs.init("zkUjn0Dexn31xEuUF"); })(); </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --bg-color: #050505; 
+            --surface-color: rgba(20, 20, 20, 0.9);
+            --accent-lime: #d4ff00; 
+            --accent-cyan: #00f2ff; 
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            font-family: 'Oswald', sans-serif; 
+            margin: 0; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #050505 100%);
+        }
+
+        header { padding: 50px 20px; text-align: center; border-bottom: 1px solid #222; }
+        .main-title { font-family: 'Cinzel', serif; font-size: 2.5rem; margin: 0; color: var(--text-main); letter-spacing: 4px; text-transform: uppercase; }
+        .sub-title { font-size: 1rem; letter-spacing: 4px; color: var(--accent-lime); margin: 10px 0 0 0; }
+        .season-text { font-size: 0.8rem; color: var(--accent-cyan); margin: 5px 0; opacity: 0.8; }
+
+        .nav-container { 
+            display: flex; justify-content: center; gap: 10px; 
+            padding: 20px 10px; background: rgba(0,0,0,0.5); 
+            backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;
+        }
+        .nav-btn { 
+            background: rgba(255,255,255,0.03); border: 1px solid #333; 
+            color: var(--text-dim); padding: 12px 20px; cursor: pointer; 
+            text-transform: uppercase; font-weight: 600; font-size: 0.9rem;
+            transition: all 0.3s ease; letter-spacing: 1px; border-radius: 4px;
+        }
+        .nav-btn.active { 
+            border-color: var(--accent-lime); color: var(--accent-lime); 
+            background: rgba(212, 255, 0, 0.05); box-shadow: 0 0 15px rgba(212, 255, 0, 0.1); 
+        }
+
+        /* FIXED ANIMATION CONTAINER */
+        .content-area { 
+            flex-grow: 1; 
+            min-height: 400px; /* Prevents the page from collapsing/jumping */
+            position: relative;
+        }
+        .page { 
+            display: none; 
+            opacity: 0; 
+            width: 90%; 
+            max-width: 450px; 
+            margin: 30px auto; 
+            transition: opacity 0.3s ease-in-out; /* Pure fade, no shaking */
+        }
+        .page.active { display: block; opacity: 1; }
+
+        .card { background: var(--surface-color); border: 1px solid #222; padding: 30px; border-radius: 4px; }
+        h2 { font-family: 'Cinzel', serif; color: var(--text-main); margin-top: 0; border-bottom: 2px solid var(--accent-lime); display: inline-block; padding-bottom: 5px; }
+
+        input { width: 100%; padding: 15px; margin-bottom: 20px; background: #000; border: 1px solid #333; color: white; font-family: 'Oswald'; }
+        .btn { width: 100%; padding: 16px; background: var(--accent-lime); color: #000; font-weight: 800; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .btn:hover { background: var(--accent-cyan); }
+
+        footer { text-align: center; padding: 40px 20px; color: var(--text-dim); font-size: 0.8rem; line-height: 2; border-top: 1px solid #222; }
+        .footer-highlight { color: #fff; font-weight: bold; }
+
+        /* RESPONSIVE DESKTOP LAYOUT */
+        @media (min-width: 768px) {
+            .page { max-width: 700px; padding: 40px; }
+            .main-title { font-size: 4rem; }
+            .nav-btn { padding: 15px 50px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="main-title">MARS ARENA</h1>
+        <p class="sub-title">EFOOTBALL TOURNAMENT</p>
+        <p class="season-text">SEASON 2025-2026</p>
+    </header>
+
+    <div class="nav-container">
+        <button class="nav-btn active" onclick="showPage('reg', this)">Register</button>
+        <button class="nav-btn" onclick="showPage('sched', this)">Match Date</button>
+        <button class="nav-btn" onclick="showPage('rules', this)">Rules</button>
+    </div>
+
+    <div class="content-area">
+        <section id="reg" class="page active">
+            <div class="card">
+                <h2>REGISTRATION</h2>
+                <form id="regForm">
+                    <input type="text" id="name" placeholder="GAMER NAME" required>
+                    <input type="tel" id="phone" placeholder="WHATSAPP NUMBER" required>
+                    <input type="text" id="efid" placeholder="EFOOTBALL ID" required>
+                    <input type="number" id="str" placeholder="STRENGTH (3100-3200)" required>
+                    <button type="submit" class="btn" id="submitBtn">SUBMIT APPLICATION</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="sched" class="page">
+            <div class="card" style="text-align: center;">
+                <h2>MATCH DATE</h2>
+                <h1 style="color: var(--accent-cyan); font-size: 2.5rem; margin: 20px 0;">25 APR 2026</h1>
+                <p>10:00 PM BDT</p>
+            </div>
+        </section>
+
+        <section id="rules" class="page">
+            <div class="card">
+                <h2>REGULATIONS</h2>
+                <ul style="color: #ccc; line-height: 2; padding-left: 20px;">
+                    <li>Entry fee: 50 TK (No refunds)</li>
+                    <li>Stable network is mandatory</li>
+                    <li>Disconnect = Match loss</li>
+                    <li>Strength limit: 3100 - 3200</li>
+                    <li>Zero tolerance for abuse or racism</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div>HELPLINE: <span class="footer-highlight">01601258881</span></div>
+        <div>POWERED BY <span class="footer-highlight">M A R S</span></div>
+        <div>DESIGNED BY REDOWAN ISLAM</div>
+        <div>SPONSORED BY U G Z U F</div>
+    </footer>
+
+    <script>
+        function showPage(id, btn) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const str = parseInt(document.getElementById('str').value);
+            
+            if(str < 3100 || str > 3200) {
+                alert("REGISTRATION DENIED: Strength must be 3100-3200");
+                return;
+            }
+
+            btn.innerText = "SENDING...";
+            
+            emailjs.send("service_tpwcuqi", "template_eazn4jo", {
+                from_name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                ef_id: document.getElementById('efid').value,
+                strength: str
+            })
+            .then(function() {
+                alert("Registered Successfully!");
+                document.getElementById('regForm').reset();
+                btn.innerText = "SUBMIT APPLICATION";
+            }, function(error) {
+                alert("Submission Failed.");
+                btn.innerText = "SUBMIT APPLICATION";
+            });
+        });
+    </script>
+</body>
+</html>
